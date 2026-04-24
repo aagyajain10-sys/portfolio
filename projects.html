@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f2f4f8;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e3a8a;
+  padding: 15px 40px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+}
+
+/* HEADER */
+.projects-header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.projects-header h1 {
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+/* FILTER */
+.filter-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-buttons button {
+  padding: 10px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  background: #1e3a8a;
+  color: white;
+  cursor: pointer;
+}
+
+/* PROJECT GRID */
+.projects-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+/* PROJECT CARD */
+.project-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* RECTANGLE IMAGE FIX */
+.project-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #eee;
+  border-bottom: 2px solid #ddd;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* TEXT */
+.project-content {
+  padding: 25px;
+}
+
+.project-content h3 {
+  color: #1e3a8a;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.project-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.project-content a {
+  display: inline-block;
+  text-decoration: none;
+  background: #1e3a8a;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* SLIDER */
+.slider-section {
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 0 20px 40px;
+}
+
+.slider-section h2 {
+  margin-bottom: 15px;
+  color: #1e3a8a;
+}
+
+.slider-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.slider-buttons {
+  margin-top: 15px;
+}
+
+.slider-buttons button {
+  padding: 10px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  background: #1e3a8a;
+  color: white;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.dark-mode-btn {
+  background-color: #facc15;
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  }
+
+  .dark-mode-btn:hover {
+    background-color: #eab308;
+    }
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+.popup-content {
+  background: white;
+  width: 60%;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.close {
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+}
+/* MOBILE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+}
+</style>
+</head>
+<script src="script.js"></script>
+<body>
+
+<!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">MyPortfolio</div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <button class="dark-mode-btn" onclick="toggleDarkMode()">Dark Mode</button>
+  </nav>
+<!-- HEADER -->
+<section class="projects-header">
+  <h1>My Projects</h1>
+  <p>Here are some of my academic and web development projects.</p>
+</section>
+
+<!-- FILTER -->
+<div class="filter-buttons">
+  <button onclick="filterProjects('all')">All</button>
+  <button onclick="filterProjects('web')">Web</button>
+  <button onclick="filterProjects('academic')">Academic</button>
+  <button onclick="filterProjects('mini')">Mini</button>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects-container">
+
+  <!-- PROJECT 1 -->
+  <div class="project-card web">
+    <div class="project-image-wrapper">
+      <img src="home.png" alt="Portfolio Website" class="project-image">
+    </div>
+    <div class="project-content">
+      <h3>Portfolio Website</h3>
+      <p>A personal portfolio website showcasing profile, skills, and projects.</p>
+      <a href="#">View Project</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project-card academic">
+    <div class="project-image-wrapper">
+      <img src="loan.png" class="project-image">
+    </div>
+    <div class="project-content">
+      <h3>Loan Prediction</h3>
+      <p>Machine learning project to predict loan approval.</p>
+      <a href="https://huggingface.co/spaces/MAVERICKSSS/loan-approvalapp">
+  View Project
+</a>
+      
+    </div>
+  </div>
+
+  <!-- PROJECT 3 -->
+  <div class="project-card mini">
+    <div class="project-image-wrapper">
+      <img src="form.png" class="project-image">
+    </div>
+    <div class="project-content">
+      <h3>Student Form</h3>
+      <p>Form validation project using HTML</p>
+      <a href="#" onclick="openPopup('Student Form','form.png','Built using HTML')">View Project</a>
+    </div>
+  </div>
+
+<div class="project-card academic">
+  <div class="project-image-wrapper">
+    <img src="airbnb.png" alt="Airbnb Price Prediction Model" class="project-image">
+  </div>
+
+  <div class="project-content">
+    <h3>Airbnb Price Prediction Model</h3>
+    <p>
+      A machine learning project that predicts Airbnb listing prices based on
+      features such as location, room type, availability, number of reviews,
+      and property details.
+    </p>
+
+    <a href="https://huggingface.co/spaces/Meeradesai2067/aiproject1" target="_blank">
+      View Project
+    </a>
+  </div>
+</div>
+</section>
+
+
+
+<!-- SLIDER -->
+<section class="slider-section">
+  <h2>Project Highlights</h2>
+  <img id="sliderImage" src="home.png" class="slider-image">
+  
+  <div class="slider-buttons">
+    <button onclick="prevSlide()">Prev</button>
+    <button onclick="nextSlide()">Next</button>
+  </div>
+</section>
+
+<!-- PASTE HERE (end of file) -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <img id="popupImg">
+    <h3 id="popupTitle"></h3>
+    <p id="popupDesc"></p>
+  </div>
+</div>
+
+
+</body>
+</html>
